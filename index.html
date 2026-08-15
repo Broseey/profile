@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ambrose Othniel — Portfolio</title>
+    <style>
+      :root {
+        --bg-color: #faf8f5; /* Premium Soft Cream */
+        --text-color: #1a1a1a;
+        --text-muted: #5a5a5a;
+        --badge-bg: #eae6df; /* Darker Cream for contrast */
+        --badge-text: #1a1a1a;
+        --copy-btn-hover: #eae6df;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-color: #0d1117; /* Slate Dark */
+          --text-color: #f0f3f6;
+          --text-muted: #8b949e;
+          --badge-bg: #21262d;
+          --badge-text: #c9d1d9;
+          --copy-btn-hover: #21262d;
+        }
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        max-width: 600px;
+        margin: 80px auto;
+        padding: 0 20px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+        position: relative;
+      }
+
+      /* Premium Real-Time Clock Layout */
+      .timezone-clock-container {
+        position: absolute;
+        top: -20px;
+        right: 20px;
+        text-align: right;
+        user-select: none;
+      }
+      .clock-time {
+        font-size: 1.15rem;
+        font-weight: 700;
+        font-family: monospace;
+        color: var(--text-color);
+        letter-spacing: -0.02em;
+      }
+      .clock-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+        display: block;
+        margin-top: -2px;
+        font-weight: 600;
+      }
+      @media (max-width: 680px) {
+        .timezone-clock-container {
+          position: relative;
+          top: 0;
+          right: 0;
+          text-align: left;
+          margin-bottom: 28px;
+        }
+      }
+
+      /* Editorial Serif Stack for Name Header */
+      h1 {
+        font-family:
+          "New York", "Georgia", "Cambria", "Times New Roman", Times, serif;
+        font-size: 1.85rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        letter-spacing: -0.01em;
+      }
+
+      p.tagline {
+        color: var(--text-muted);
+        margin-top: 0;
+        margin-bottom: 40px;
+      }
+      h2 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 40px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 24px;
+      }
+
+      .item-role {
+        font-weight: 600;
+        color: inherit;
+      }
+      .item-title {
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      .loc {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 400;
+      }
+
+      a {
+        color: var(--text-color);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        font-weight: 500;
+      }
+      a:hover {
+        color: var(--text-muted);
+      }
+      .meta {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        display: block;
+        margin-top: 2px;
+      }
+
+      .project-stack {
+        font-size: 0.75rem;
+        color: var(--badge-text);
+        font-family: monospace;
+        background-color: var(--badge-bg);
+        padding: 3px 8px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 8px;
+        font-weight: 500;
+      }
+
+      .email-container {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .copy-btn {
+        background: none;
+        border: none;
+        padding: 4px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        color: var(--text-muted);
+        transition:
+          background-color 0.2s,
+          color 0.2s;
+        vertical-align: middle;
+      }
+      .copy-btn:hover {
+        background-color: var(--copy-btn-hover);
+        color: var(--text-color);
+      }
+      .copy-status {
+        font-size: 0.8rem;
+        color: #10b981;
+        font-weight: 500;
+        display: none;
+        margin-left: 4px;
+      }
+      a span {
+        font-weight: 300;
+        font-size: 0.9em;
+        display: inline-block;
+        margin-left: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Real-Time Timezone System Tracking Lagos/WAT -->
+    <div class="timezone-clock-container">
+      <span class="clock-time" id="wat-clock">00:00:00</span>
+      <span class="clock-label">Lagos, NG • WAT</span>
+    </div>
+
+    <h1>Ambrose Othniel</h1>
+    <p class="tagline">Frontend / Fullstack Developer based in Lagos</p>
+
+    <h2>Featured Projects</h2>
+    <ul>
+      <li>
+        <a href="https://uniride.ng" target="_blank">Uniride<span>↗</span></a>
+        <span class="meta"
+          >Founding Engineer. Owned the end-to-end product delivery
+          architecture. Configured Mapbox API routes, LocationIQ geocoding
+          layers, secure Paystack channels, and async real-time tracking scripts
+          via Supabase Edge Workers.</span
+        >
+        <span class="project-stack"
+          >React / TypeScript / Postgres / Supabase / Cloudflare Workers</span
+        >
+      </li>
+      <li>
+        <a href="https://ai.gethireddigital.com" target="_blank"
+          >GHD Agency Website<span>↗</span></a
+        >
+        <span class="meta"
+          >Frontend Lead. Supervised and launched the end-to-end translation of
+          design systems and commercial platforms. Coded a custom company theme
+          from scratch, optimized responsive metrics, and cut user friction
+          loops.</span
+        >
+        <span class="project-stack"
+          >WordPress Custom Theme & PHP Development</span
+        >
+      </li>
+    </ul>
+
+    <h2>Professional Experience</h2>
+    <ul>
+      <li>
+        <span class="item-role"
+          >Founding Engineer at
+          <a href="https://uniride.ng/about" target="_blank" class="item-title"
+            >Uniride</a
+          ></span
+        >
+        <span class="loc">• Lagos, Hybrid</span>
+        <span class="meta"
+          >Led technical development from concept to launch; built the initial
+          MVP and core frontend interfaces while managing design handoffs and
+          asset delivery cycles.</span
+        >
+      </li>
+      <li>
+        <span class="item-role"
+          >WordPress / Fullstack Engineer at
+          <a
+            href="https://www.linkedin.com/company/rxgpt/"
+            target="_blank"
+            class="item-title"
+            >RxGPTai</a
+          ></span
+        >
+        <span class="loc">• California, Remote</span>
+        <span class="meta"
+          >Managed engineering interns to implement responsive layout
+          structures; refined product interfaces to match high-end corporate
+          style criteria.</span
+        >
+      </li>
+      <li>
+        <span class="item-role"
+          >Solutions Engineer at
+          <a
+            href="https://www.linkedin.com/company/aview-international/"
+            target="_blank"
+            class="item-title"
+            >Aview</a
+          ></span
+        >
+        <span class="loc">• Toronto, Canada (Remote)</span>
+        <span class="meta"
+          >Architected an internal AI dubbing desktop app with Electron and
+          ElevenLabs; built timelines for precise sound trimming, audio
+          thresholds, and custom sidechain ducking.</span
+        >
+      </li>
+      <li>
+        <span class="item-role"
+          >Frontend Developer at
+          <a
+            href="https://www.linkedin.com/company/conigma/"
+            target="_blank"
+            class="item-title"
+            >Conigma(Connie)</a
+          ></span
+        >
+        <span class="loc">• London, Remote</span>
+        <span class="meta"
+          >Executed meticulous visual QA workflows and shipped UI modifications
+          for proprietary web modules inside the core Connie AI and GTM
+          workspace applications.</span
+        >
+      </li>
+      <li>
+        <span class="item-role"
+          >WordPress / (Frontend-Focused) Fullstack Engineer at
+          <a
+            href="https://ai.gethireddigital.com"
+            target="_blank"
+            class="item-title"
+            >GHD Agency</a
+          ></span
+        >
+        <span class="loc">• New Jersey, US (Remote)</span>
+        <span class="meta"
+          >Engineered high-end custom WordPress architectures and interactive
+          preview platforms used directly by executive teams to close enterprise
+          contracts.</span
+        >
+      </li>
+      <li>
+        <span class="item-role">Freelance Fullstack Developer</span>
+        <span class="loc">• Contract</span>
+        <span class="meta"
+          >Partnered with global brands and digital groups to implement custom
+          business architectures, plugin integrations, and scalable code bases
+          across adaptive tech stacks.</span
+        >
+      </li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>
+      Reach out directly via email at
+      <span class="email-container">
+        <a href="mailto:ambroseothniel1@gmail.com" id="email-link"
+          >ambroseothniel1@gmail.com</a
+        >
+        <button
+          class="copy-btn"
+          id="copy-email-btn"
+          title="Copy email address"
+          aria-label="Copy email address"
+        >
+          <svg
+            id="copy-icon"
+            xmlns="http://w3.org"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path
+              d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+            ></path>
+          </svg>
+          <svg
+            id="check-icon"
+            xmlns="http://w3.org"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="display: none"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </button>
+        <span class="copy-status" id="copy-text">Copied!</span>
+      </span>
+    </p>
+    <p>
+      Find me on
+      <a href="https://github.com/Broseey/" target="_blank">GitHub</a> and
+      connect on
+      <a href="https://www.linkedin.com/in/ambrose-othniel/" target="_blank"
+        >LinkedIn</a
+      >.
+    </p>
+
+    <script>
+      // High-performance real-time clock targeting West Africa Time (WAT)
+      function updateWATClock() {
+        const clockElement = document.getElementById("wat-clock");
+        if (!clockElement) return;
+
+        const options = {
+          timeZone: "Africa/Lagos",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        };
+        const formatter = new Intl.DateTimeFormat("en-US", options);
+        clockElement.textContent = formatter.format(new Date());
+      }
+      updateWATClock();
+      setInterval(updateWATClock, 1000);
+      // Interactive clipboard functionality
+      document
+        .getElementById("copy-email-btn")
+        .addEventListener("click", function () {
+          const emailText = document.getElementById("email-link").innerText;
+          navigator.clipboard
+            .writeText(emailText)
+            .then(() => {
+              const copyIcon = document.getElementById("copy-icon");
+              const checkIcon = document.getElementById("check-icon");
+              const copyText = document.getElementById("copy-text");
+              copyIcon.style.display = "none";
+              checkIcon.style.display = "inline-block";
+              copyText.style.display = "inline-block";
+              setTimeout(() => {
+                copyIcon.style.display = "inline-block";
+                checkIcon.style.display = "none";
+                copyText.style.display = "none";
+              }, 2000);
+            })
+            .catch((err) => {
+              console.error("Failed to copy text: ", err);
+            });
+        });
+    </script>
+  </body>
+</html>
